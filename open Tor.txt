@@ -1,0 +1,10 @@
+C:\Users\<user>\AppData\Roaming\tor\ . Type: tor.exe
+
+
+you should see this too:
+This is a SOCKS proxy, not an HTTP proxy.
+It appears you have configured your web browser to use this Tor port as an HTTP proxy.
+
+This is not correct: This port is configured as a SOCKS proxy, not an HTTP proxy. If you need an HTTP proxy tunnel, use the HTTPTunnelPort configuration option in place of, or in addition to, SOCKSPort. Please configure your client accordingly.
+
+See https://www.torproject.org/documentation.html for more information.

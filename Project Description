@@ -1,0 +1,32 @@
+Build Scraper + OCR Pipeline to Identify Corporate IT Assets on eBay
+Posted yesterday
+Worldwide
+
+Summary
+OVERVIEW:
+We’re looking for a developer to build a data pipeline that scrapes eBay and Xianyu for IT asset (laptops, mobile phones, tablets, hard drives, etc.) listings (starting with MacBooks) using OCR (optical character recognition) to extract visible asset tags and serial numbers from the listing images. The goal is to identify corporate-owned IT assets that have been resold on the secondary market — for use in internal auditing, asset recovery, and resale analysis.
+
+POTENTIAL SCOPE:
+Phase 1 – Web Scraper
+• Scrape eBay (U.S.) laptop listings with keywords like “MacBook Pro,” “MacBook Air,” etc.
+• For each listing, extract:
+• Title, description, price, seller name/location
+• All listing images
+• Save image files to Google Drive or local folder
+• Store metadata and links in a structured format (CSV or JSON)
+
+Phase 2 – OCR + Data Extraction
+• Run OCR on all listing images using Tesseract, Google Vision, or similar
+• Extract visible asset tags, serials, company names, department labels, etc.
+• Return structured data with basic confidence scoring or tagging logic (e.g., “contains the word Meta”)
+
+Phase 3 – Optional Heuristics
+• Flag listings based on asset tag patterns or known corporate ID formats
+• Group potential matches by company name or tag prefix
+
+DELIVERABLES:
+• Scraping script with documentation
+• OCR pipeline with output
+• CSV or JSON of cleaned data
+• Folders of listing images (or cloud link)
+• Recommendations for scaling or automation
