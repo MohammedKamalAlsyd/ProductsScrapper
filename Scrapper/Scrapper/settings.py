@@ -16,10 +16,10 @@ ADDONS = {}
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "Scrapper (+http://www.yourdomain.com)"
+#USER_AGENT = "Scrapper (+http://www.yourdomain.com)" # Set in spider custom_settings
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = False
+ROBOTSTXT_OBEY = False # eBay's robots.txt can be restrictive for scraping search
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -27,10 +27,10 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+#DOWNLOAD_DELAY = 1 # Start with 1 or 2 to be polite
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
+#CONCURRENT_REQUESTS_PER_DOMAIN = 8 # Default 8
+#CONCURRENT_REQUESTS_PER_IP = 0 # If domain is IP
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -40,8 +40,8 @@ ROBOTSTXT_OBEY = False
 
 # Override the default request headers:
 #DEFAULT_REQUEST_HEADERS = {
-#    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-#    "Accept-Language": "en",
+#   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+#   "Accept-Language": "en",
 #}
 
 # Enable or disable spider middlewares
@@ -64,9 +64,19 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "Scrapper.pipelines.ScrapperPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "Scrapper.pipelines.ScrapperPipeline": 300, # Keep your general pipeline
+   "Scrapper.pipelines.CustomEbayImagesPipeline": 1, # Add image pipeline, runs first
+}
+
+# Image Pipeline Settings
+IMAGES_STORE = 'downloaded_ebay_images' # Directory where images will be stored
+IMAGES_URLS_FIELD = 'images'         # Item field containing image URLs
+IMAGES_RESULT_FIELD = 'image_paths'  # Item field to store download results (paths)
+
+# Custom setting for the spider to enable/disable image downloads
+# Can be overridden by spider argument: -a DOWNLOAD_IMAGES=True or -a DOWNLOAD_IMAGES=False
+# DOWNLOAD_IMAGES = True
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -91,3 +101,5 @@ ROBOTSTXT_OBEY = False
 
 # Set settings whose default value is deprecated to a future-proof value
 FEED_EXPORT_ENCODING = "utf-8"
+REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
+TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"

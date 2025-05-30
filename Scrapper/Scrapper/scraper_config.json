@@ -1,36 +1,33 @@
 {
   "base_keywords": [
-    "MacBook Pro",
-    "MacBook Air"
+    "RTX 3090"
   ],
-  "selenium_webdriver_path": "C:/Users/Ahmed Kamal/Desktop/Tor Browser/Browser/firefox.exe", 
-  "selenium_wait_timeout": 10,
-  "sites": {
-    "ebay_us": {
-      "base_url": "https://www.ebay.com",
-      "search_bar_selector": "input#gh-ac",
-      "autocomplete_container_selector": "ul#ebay-autocomplete",
-      "autocomplete_parser_type": "ebay_list",
-      "search_url_template_with_category": "https://www.ebay.com/sch/i.html?_from=R40&_nkw={search_term}&_sacat={category_id}&LH_TitleDesc=0&rt=1&LH_PrefLoc=1",
-      "search_url_template_no_category": "https://www.ebay.com/sch/i.html?_from=R40&_nkw={search_term}&_sacat=0&LH_TitleDesc=0&rt=1&LH_PrefLoc=1",
-      "allowed_category_keywords": ["laptop", "netbook", "laptops & netbooks"],
-      "allow_search_without_category_if_suggestion_had_no_category": true
-    },
-    "olx_eg": {
-      "base_url": "https://www.dubizzle.com.eg", 
-      "search_bar_selector": "input[data-aut-id='searchBox']", 
-      "autocomplete_container_selector": "div._8185b4e8", 
-      "autocomplete_parser_type": "olx_buttons",
-      "category_name_to_path_mapping": {
-        "لاب توب": "electronics-home-appliances/computers-accessories/laptop-computers",
-        "كمبيوتر و إكسسوارات": "electronics-home-appliances/computers-accessories",
-        "تابلت": "electronics-home-appliances/tablets-e-readers",
-        "موبايل": "mobile-phones-accessories/mobile-phones"
-      },
-      "search_url_template_with_category_path": "{base_url}/{category_path}/q-{search_term_slug}/",
-      "search_url_template_no_category": "{base_url}/search/?keywords={search_term_query}",
-      "allowed_category_keywords": ["لاب توب", "كمبيوتر", "تابلت", "موبايل", "هاتف"],
-      "allow_search_without_category_if_suggestion_had_no_category": true
-    }
-  }
+  "use_suggestions": false,
+  "suggestion_url": "https://autosug.ebaystatic.com/autosug",
+  "suggestion_base_params": {
+    "sId": "0",
+    "_rs": "1",
+    "_richres": "1",
+    "callback": "0",
+    "_store": "1",
+    "_help": "0",
+    "_richsug": "1",
+    "_eprogram": "1",
+    "_td": "1",
+    "_nearme": "1",
+    "_nls": "0"
+  },
+  "search_base_url": "https://www.ebay.com/sch/i.html",
+  "search_base_params": {
+    "_from": "R40",
+    "rt": "nc",
+    "_sacat": "0",
+    "_ipg": "240",
+    "_sop": "12"
+  },
+  "default_category_id": "0",
+  "use_tor": false,
+  "tor_proxy_address": "http://127.0.0.1:9080",
+  "max_search_pages_per_keyword": 3,
+  "download_product_images": true
 }
